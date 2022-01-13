@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <p>This is the placeholder for Team Activity 02</p>
+      </div>
+    </div>
+    <div class="container">
+      <% if (!!error) { %>
+        <p class="error">
+          <%= error%>
+        </p>
+        <% } %>
+        <form action="/ta02/addUser" method="POST">
+          <h2>Add User</h2>
+          <label for="addName">Name:</label>
+          <input type="text" name="addUser" id="addName">
+          <button type="submit">Add User</button>
+        </form>
+
+        <form action="/ta02/removeUser" method="POST">
+          <h2>Delete User</h2>
+          <label for="removeName">Name:</label>
+          <input type="text" name="removeUser" id=removeName>
+          <button type="submit">Delete User</button>
+        </form>
+
+        <h2>Users</h2>
+        <% if (users.length > 0) { %>
+          <ul>
+            <% for (let user of users) { %>
+              <li>
+                <%= user.name %>
+              </li>
+            <% } %>
+          </ul>
+          <% } else { %>
+            <h3>No Users Available</h3>
+          <% } %>
+    </div>
+
+    
+</body>
+
+</html>
