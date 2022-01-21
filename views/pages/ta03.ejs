@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <% include ../includes/header.ejs %>
+  </head>
 
-<head>
-  <% include ../includes/header.ejs %>
-</head>
-
-<body>
-  <% include ../includes/nav.ejs %>
+  <body>
+    <% include ../includes/nav.ejs %>
     <div class="jumbotron text-center">
       <div class="container">
-        <h1>
-          <%= title %>
-        </h1>
-        <p>This is the placeholder for Team Activity 03</p>
+        <h1><%= title %></h1>
+        <form class="form-inline" action="/ta03" method="GET">
+          <div class="form-group mb-2">
+            <label for="criteria">Search Criteria</label>
+            <input class="form-control" id="criteria" name="criteria" type="text" />
+          </div>  
+          <button class="form-button btn-primary" type="submit">Search</button>
+        </form>
+        <% for(let product of products) { %>
+        <div class="card text-center" style="width: 50rem;">
+          <img class="card-img-top" src="<%= product.imageUrl %>" alt="<%= product.name %>" />
+          <div class="card-body">
+            <h2 class="card-title"><%= product.name %></h2>
+            <h3 class="card-subtitle">$<%= product.price %></h3>
+            <p class="card-text"><%= product.description %></p>
+            
+            <% for(let tag of product.tags) { %>
+            <span><%= tag %></span>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
       </div>
     </div>
-    <div class="container">
-
-    </div>
-
-
-</body>
-
+    <div class="container"></div>
+  </body>
 </html>

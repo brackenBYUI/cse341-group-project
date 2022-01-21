@@ -47,3 +47,14 @@
   color: white;
   padding: .5rem;
 }
+
+.form-button .btn-primary {
+  background: #845ac7;
+  border-color: #845ac7;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
